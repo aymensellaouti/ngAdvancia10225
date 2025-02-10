@@ -2,3 +2,4 @@
 /* permet d'ajouter bootstrap en global */
 @import '~bootstrap';
 @import '~bootstrap-icons';
+@import 'assets/css/rotating-card.css';
