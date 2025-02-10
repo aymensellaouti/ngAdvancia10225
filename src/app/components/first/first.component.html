@@ -1,0 +1,6 @@
+<p [hidden]="isHidden">first works : {{ name }}</p>
+<div (click)="showHide()" class="alert alert-secondary">
+  <input #messageInput (change)="changeMessage(messageInput.value)" type="text" class="form-control">
+  <p>Le contenu de l'input est : {{ message }}</p>
+  <app-second/>
+</div>
