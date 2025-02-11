@@ -25,6 +25,8 @@ import { Btc2usdPipe } from './pipes/btc2usd.pipe';
 import { TodoComponent } from './todo/todo/todo.component';
 import { WeekTodoComponent } from './todo/week-todo/week-todo.component';
 import { EmbaucheComponent } from './cv/embauche/embauche.component';
+import { LoggerService } from './services/logger.service';
+import { SayHelloService } from './services/say-hello.service';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,9 @@ import { EmbaucheComponent } from './cv/embauche/embauche.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    LoggerService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
