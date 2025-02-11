@@ -1,8 +1,8 @@
 <ol class="list-group">
   <li class="list-group-item">
-    <app-cv-item [cv]="cvs[0]" />
+    <app-cv-item [cv]="cvs[0]" (selectCv)="forwardCv.emit($event)" />
   </li>
   <li class="list-group-item">
-    <app-cv-item [cv]="cvs[1]"/>
+    <app-cv-item [cv]="cvs[1]" (selectCv)="forwardCv.emit($event)"/>
   </li>
 </ol>

@@ -28,4 +28,8 @@ export class CvComponent {
     ),
   ];
   selectedCv: Cv | null = null;
+
+  getSelectedCv(cv: Cv) {
+    this.selectedCv = cv;
+  }
 }
