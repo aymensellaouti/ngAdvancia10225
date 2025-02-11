@@ -17,6 +17,8 @@ import { CvListComponent } from './cv/cv-list/cv-list.component';
 import { CvCardComponent } from './cv/cv-card/cv-card.component';
 import { MiniWordComponent } from './directives/mini-word/mini-word.component';
 import { NgStyleComponent } from './directives/ng-style/ng-style.component';
+import { NgClassComponent } from './directives/ng-class/ng-class.component';
+import { HighlightDirective } from './directives/highlight.directive';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { NgStyleComponent } from './directives/ng-style/ng-style.component';
     CvListComponent,
     CvCardComponent,
     MiniWordComponent,
-    NgStyleComponent
+    NgStyleComponent,
+    NgClassComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,

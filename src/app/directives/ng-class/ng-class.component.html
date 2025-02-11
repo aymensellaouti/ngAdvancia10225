@@ -1,0 +1,10 @@
+<p appHighlight>ng-class works!</p>
+<p [in]="'green'" [out]="'yellow'" appHighlight>ng-class works!</p>
+<p [in]="'black'" [out]="'white'" appHighlight>ng-class works!</p>
+
+<div (click)="interrupteur()" class="ampoule" [ngClass]="{
+  on: isOn,
+  off: !isOn
+}">
+  ampoule
+</div>
