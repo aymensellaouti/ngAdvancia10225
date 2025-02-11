@@ -22,6 +22,9 @@ import { HighlightDirective } from './directives/highlight.directive';
 import { RainbowDirective } from './directives/rainbow.directive';
 import { DefaultImagePipe } from './cv/pipes/default-image.pipe';
 import { Btc2usdPipe } from './pipes/btc2usd.pipe';
+import { TodoComponent } from './todo/todo/todo.component';
+import { WeekTodoComponent } from './todo/week-todo/week-todo.component';
+import { EmbaucheComponent } from './cv/embauche/embauche.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,10 @@ import { Btc2usdPipe } from './pipes/btc2usd.pipe';
     HighlightDirective,
     RainbowDirective,
     DefaultImagePipe,
-    Btc2usdPipe
+    Btc2usdPipe,
+    TodoComponent,
+    WeekTodoComponent,
+    EmbaucheComponent
   ],
   imports: [
     BrowserModule,
