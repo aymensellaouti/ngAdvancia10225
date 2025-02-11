@@ -24,7 +24,7 @@ export class CvComponent {
       'Ingénieur',
       '1234',
       20,
-      'rotating_card_profile2.png'
+      '             '
     ),new Cv(
       3,
       'Karray',
@@ -32,7 +32,7 @@ export class CvComponent {
       'Ingénieur',
       '1234',
       20,
-      'rotating_card_profile3.png'
+      ''
     ),new Cv(
       4,
       'Bouday',

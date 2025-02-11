@@ -20,6 +20,8 @@ import { NgStyleComponent } from './directives/ng-style/ng-style.component';
 import { NgClassComponent } from './directives/ng-class/ng-class.component';
 import { HighlightDirective } from './directives/highlight.directive';
 import { RainbowDirective } from './directives/rainbow.directive';
+import { DefaultImagePipe } from './cv/pipes/default-image.pipe';
+import { Btc2usdPipe } from './pipes/btc2usd.pipe';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { RainbowDirective } from './directives/rainbow.directive';
     NgStyleComponent,
     NgClassComponent,
     HighlightDirective,
-    RainbowDirective
+    RainbowDirective,
+    DefaultImagePipe,
+    Btc2usdPipe
   ],
   imports: [
     BrowserModule,

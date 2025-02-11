@@ -1,5 +1,7 @@
 <div class="row">
   <div class="col">
+    {{1 | btc2usd | currency}} /
+    {{1 | btc2usd: false}}
     <app-cv-list (forwardCv)="getSelectedCv($event)" [cvs]="cvs" />
   </div>
   <div class="col">
