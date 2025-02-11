@@ -5,7 +5,7 @@ import { Todo } from "../model/todo";
   providedIn: 'root',
 })
 export class TodoService {
-
+  todos: Todo[] = [];
   /**
    * elle retourne la liste des todos
    *
