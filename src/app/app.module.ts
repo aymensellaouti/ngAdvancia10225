@@ -30,6 +30,7 @@ import { TodoComponent } from './todo/todo/todo.component';
 import { WeekTodoComponent } from './todo/week-todo/week-todo.component';
 import { EmbaucheComponent } from './cv/embauche/embauche.component';
 import { LoggerService } from './services/logger.service';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { LoggerService } from './services/logger.service';
     TodoComponent,
     WeekTodoComponent,
     EmbaucheComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
