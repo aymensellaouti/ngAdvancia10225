@@ -1,13 +1,17 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
+
+import { ToastrModule } from 'ngx-toastr';
+
 import { AppComponent } from './app.component';
 import { FirstComponent } from './components/first/first.component';
 import { SecondComponent } from './components/second/second.component';
 import { ColorComponent } from './components/color/color.component';
 import { TwoComponent } from './components/two/two.component';
-import { FormsModule } from '@angular/forms';
 import { RotatingCardComponent } from './components/rotating-card/rotating-card.component';
 import { PereComponent } from './communication/pere/pere.component';
 import { FilsComponent } from './communication/fils/fils.component';
@@ -26,7 +30,6 @@ import { TodoComponent } from './todo/todo/todo.component';
 import { WeekTodoComponent } from './todo/week-todo/week-todo.component';
 import { EmbaucheComponent } from './cv/embauche/embauche.component';
 import { LoggerService } from './services/logger.service';
-import { SayHelloService } from './services/say-hello.service';
 
 @NgModule({
   declarations: [
@@ -51,16 +54,16 @@ import { SayHelloService } from './services/say-hello.service';
     Btc2usdPipe,
     TodoComponent,
     WeekTodoComponent,
-    EmbaucheComponent
+    EmbaucheComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
   ],
-  providers: [
-    LoggerService
-  ],
-  bootstrap: [AppComponent]
+  providers: [LoggerService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
