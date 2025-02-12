@@ -4,6 +4,7 @@ import { LoggerService } from 'src/app/services/logger.service';
 import { SayHelloService } from 'src/app/services/say-hello.service';
 import { TodoService } from 'src/app/todo/service/todo.service';
 import { ToastrService } from 'ngx-toastr';
+import { CvService } from '../services/cv.service';
 
 @Component({
   selector: 'app-cv',
@@ -11,50 +12,11 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./cv.component.css'],
 })
 export class CvComponent {
-  cvs: Cv[] = [
-    new Cv(
-      1,
-      'Dallagi',
-      'Marwa',
-      'Ingénieur',
-      '1234',
-      20,
-      'rotating_card_profile.png'
-    ),
-    new Cv(2, 'Lachkham', 'Anas', 'Ingénieur', '1234', 20, '             '),
-    new Cv(3, 'Karray', 'Amine', 'Ingénieur', '1234', 20, ''),
-    new Cv(
-      4,
-      'Bouday',
-      'Youssef',
-      'Ingénieur',
-      '1234',
-      20,
-      'rotating_card_profile2.png'
-    ),
-    new Cv(
-      5,
-      'Raissi',
-      'Malek',
-      'Ingénieur',
-      '1234',
-      20,
-      'rotating_card_profile.png'
-    ),
-    new Cv(
-      6,
-      'Gassara',
-      'Mohamed',
-      'Ingénieur',
-      '1234',
-      20,
-      'rotating_card_profile2.png'
-    ),
-  ];
+  cvService = inject(CvService);
+  cvs: Cv[] = this.cvService.getCvs();
   selectedCv: Cv | null = null;
   loggerService = inject(LoggerService);
   sayHelloService = inject(SayHelloService);
-  todoService = inject(TodoService);
   toastr = inject(ToastrService);
   constructor() //private loggerService: LoggerService
   {
