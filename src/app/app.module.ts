@@ -37,6 +37,8 @@ import { TestFormComponent } from './formulaire/test-form/test-form.component';
 import { LoginComponent } from './auth/login/login.component';
 import { NF404Component } from './components/nf404/nf404.component';
 import { TestRxjsComponent } from './rxjs/test-rxjs/test-rxjs.component';
+import { AddCvComponent } from './cv/add-cv/add-cv.component';
+import { authInterceptorProvider } from './auth/interceptorss/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -67,7 +69,8 @@ import { TestRxjsComponent } from './rxjs/test-rxjs/test-rxjs.component';
     TestFormComponent,
     LoginComponent,
     NF404Component,
-    TestRxjsComponent
+    TestRxjsComponent,
+    AddCvComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,9 +78,9 @@ import { TestRxjsComponent } from './rxjs/test-rxjs/test-rxjs.component';
     FormsModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
-    HttpClientModule
+    HttpClientModule,
   ],
-  providers: [LoggerService],
+  providers: [LoggerService, authInterceptorProvider],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

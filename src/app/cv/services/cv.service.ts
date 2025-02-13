@@ -1,8 +1,10 @@
 import {  inject, Injectable } from '@angular/core';
 import { Cv } from '../model/cv.model';
 import { Observable, Subject } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { APP_API } from 'src/app/config/app-api.config';
+import { APP_CONST } from 'src/app/config/app-const.config';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 
 @Injectable({
@@ -52,6 +54,7 @@ export class CvService {
   private selectCvSubject$ = new Subject<Cv>();
   selectCv$ = this.selectCvSubject$.asObservable();
   http = inject(HttpClient);
+  authService = inject(AuthService);
   /**
    * Retourne la liste des cvs
    * @returns Cv[]
@@ -67,6 +70,7 @@ export class CvService {
     return this.http.get<Cv>(APP_API.cv + id);
   }
   deleteCvByIdFromApi(id: number): Observable<{count: number}> {
+
     return this.http.delete<{ count: number }>(APP_API.cv + id);
   }
 
