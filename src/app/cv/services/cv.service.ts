@@ -1,5 +1,6 @@
 import {  Injectable } from '@angular/core';
 import { Cv } from '../model/cv.model';
+import { Subject } from 'rxjs';
 
 
 @Injectable({
@@ -46,7 +47,8 @@ export class CvService {
       'rotating_card_profile2.png'
     ),
   ];
-
+  private selectCvSubject$ = new Subject<Cv>();
+  selectCv$ = this.selectCvSubject$.asObservable()
   /**
    * Retourne la liste des cvs
    * @returns Cv[]
@@ -80,5 +82,13 @@ export class CvService {
       return true;
     }
     return false;
+  }
+
+  /**
+   * Permet d'ajouter un cv au flux des cvs sélectionnéss
+   * @param cv le cv sélectionné
+   */
+  selectCv(cv: Cv): void {
+    this.selectCvSubject$.next(cv);
   }
 }

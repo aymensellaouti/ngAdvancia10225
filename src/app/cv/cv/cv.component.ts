@@ -5,6 +5,7 @@ import { SayHelloService } from 'src/app/services/say-hello.service';
 import { TodoService } from 'src/app/todo/service/todo.service';
 import { ToastrService } from 'ngx-toastr';
 import { CvService } from '../services/cv.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-cv',
@@ -14,7 +15,7 @@ import { CvService } from '../services/cv.service';
 export class CvComponent {
   cvService = inject(CvService);
   cvs: Cv[] = this.cvService.getCvs();
-  selectedCv: Cv | null = null;
+  selectedCv$: Observable<Cv> = this.cvService.selectCv$;
   loggerService = inject(LoggerService);
   sayHelloService = inject(SayHelloService);
   toastr = inject(ToastrService);
@@ -22,9 +23,12 @@ export class CvComponent {
   {
     this.loggerService.logger('Hello ODDO BHF');
     this.sayHelloService.hello();
-    this.toastr.info('Bienvenu dans notre CvTech')
+    this.toastr.info('Bienvenu dans notre CvTech');
+    // this.cvService.selectCv$.subscribe({
+    //   next: (cv) => this.selectedCv = cv
+    // })
   }
-  getSelectedCv(cv: Cv) {
-    this.selectedCv = cv;
-  }
+  // getSelectedCv(cv: Cv) {
+  //   this.selectedCv = cv;
+  // }
 }
