@@ -12,6 +12,16 @@ export class TodoComponent {
   todoService = inject(TodoService);
   todo = new Todo();
   todos = this.todoService.getTodos();
+  constructor() {
+    this.todoService.getTodoFromApi().subscribe({
+      next: (todos) => {
+        console.log({todos});
+      },
+      error: (e) => {
+        console.log(e);
+      }
+    })
+  }
   addTodo() {
     this.todoService.addTodo(this.todo);
     this.todo = new Todo();
