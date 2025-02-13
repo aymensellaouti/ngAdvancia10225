@@ -5,7 +5,7 @@ import { SayHelloService } from 'src/app/services/say-hello.service';
 import { TodoService } from 'src/app/todo/service/todo.service';
 import { ToastrService } from 'ngx-toastr';
 import { CvService } from '../services/cv.service';
-import { Observable } from 'rxjs';
+import { catchError, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-cv',
@@ -14,7 +14,15 @@ import { Observable } from 'rxjs';
 })
 export class CvComponent {
   cvService = inject(CvService);
-  cvs: Cv[] = this.cvService.getCvs();
+  cvs: Cv[] = [];
+  cvs$ = this.cvService.getCvsFromApi().pipe(
+    catchError((e) => {
+       this.toastr.error(
+         `Problème d'accès au serveur les données sont fake merci de contacter l'admin`
+       );
+       return of(this.cvService.getFakeCvs());
+    })
+  );
   selectedCv$: Observable<Cv> = this.cvService.selectCv$;
   loggerService = inject(LoggerService);
   sayHelloService = inject(SayHelloService);
@@ -26,6 +34,15 @@ export class CvComponent {
     this.toastr.info('Bienvenu dans notre CvTech');
     // this.cvService.selectCv$.subscribe({
     //   next: (cv) => this.selectedCv = cv
+    // })
+    // this.cvService.getCvsFromApi().subscribe({
+    //   next: (cvs) => {
+    //     this.cvs = cvs
+    //   },
+    //   error: (e) => {
+    //     this.toastr.error(`Problème d'accès au serveur les données sont fake merci de contacter l'admin`);
+    //     this.cvs = this.cvService.getFakeCvs();
+    //   }
     // })
   }
   // getSelectedCv(cv: Cv) {

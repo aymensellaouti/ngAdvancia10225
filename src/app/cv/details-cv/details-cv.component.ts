@@ -16,20 +16,29 @@ export class DetailsCvComponent {
   cvService = inject(CvService);
   toastr = inject(ToastrService);
   private id = this.acr.snapshot.params['id'];
-  cv: Cv | null = this.cvService.findCvById(this.id);
+  cv: Cv | null = null;
   constructor() {
-    if (!this.cv) {
-      this.router.navigate([APP_ROUTES.cv]);
-    }
+    this.cvService.getCvByIdFromApi(this.id).subscribe({
+      next: (cv) => this.cv = cv,
+      error: (e) => this.router.navigate([APP_ROUTES.cv])
+    })
   }
   delete() {
     if (this.cv) {
-      if(this.cvService.deleteCv(this.cv)) {
-        this.router.navigate([APP_ROUTES.cv]);
-      } else {
-        this.toastr.error(`Erreur lors de la suppression !! `)
-      }
-
+      // if(this.cvService.deleteCv(this.cv)) {
+      //   this.router.navigate([APP_ROUTES.cv]);
+      // } else {
+      //   this.toastr.error(`Erreur lors de la suppression !! `)
+      // }
+      this.cvService.deleteCvByIdFromApi(this.cv.id).subscribe({
+        next: () => {
+          this.router.navigate([APP_ROUTES.cv]);
+        },
+        error: (e) => {
+          this.toastr.error(`Erreur lors de la suppression !! `);
+          console.log(e);
+        }
+      })
     }
   }
 }
